@@ -10,13 +10,13 @@ interface LinkProps {
 export default function Link({
     onClick,
     disabled = false,
-    label = 'Start new chat',
+    label = 'Regenerate',
 }: LinkProps) {
     return (
         <button
             type="button"
             className={classNames(
-                'flex items-center gap-1 px-3.5 py-2.5 rounded border-[0.5px] border-solid focus:outline-none',
+                'flex items-center gap-2 px-3.5 py-2.5 rounded border-[0.5px] border-solid focus:outline-none',
                 {
                     'bg-white border-neutral-200 hover:bg-neutral-50 hover:border focus:ring-2 focus:ring-[#e5e5e5] cursor-pointer':
                         !disabled,
@@ -31,7 +31,7 @@ export default function Link({
         >
             <SparkleIcon disabled={disabled} colorClass='fill-primary-700' />
             <span
-                className={classNames('font-medium text-sm', {
+                className={classNames('font-medium text-primary-700 text-xs', {
                     'text-neutral-900': !disabled,
                     'text-neutral-400': disabled,
                 })}

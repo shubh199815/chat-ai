@@ -10,9 +10,9 @@ const SparkleIcon = ({
     <svg
         viewBox="0 0 16 16"
         xmlns="http://www.w3.org/2000/svg"
-        height="16"
-        width="16"
-        className={classNames('w-5 h-5', {
+        height="12"
+        width="12"
+        className={classNames('w-4 h-4', {
             [colorClass]: !disabled,
             'fill-neutral-400': disabled,
         })}

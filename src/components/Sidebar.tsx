@@ -1,6 +1,6 @@
 // import './Sidebar.css';
 
-import SecondaryButton from './common/Buttons/SecondaryButton';
+import Link from './common/Buttons/Link';
 
 function Sidebar() {
     return (
@@ -34,7 +34,7 @@ function Sidebar() {
                                 <div className="w-5 h-5">
                                     <svg className="w-[14.166666030883789px] h-5 text-indigo-700"></svg>
                                 </div>
-                                <span className="font-medium text-sm text-indigo-700">
+                                <span className="font-medium text-xs text-indigo-700">
                                     Ongoing prompt
                                 </span>
                             </div>
@@ -43,7 +43,7 @@ function Sidebar() {
                 </div>
             </div>
             <div className="flex flex-col gap-4 self-stretch">
-                <SecondaryButton disabled={false} />
+                <Link disabled={false} />
                 <div className="flex flex-col gap-6 self-stretch bg-white p-4 rounded-lg border border-solid border-neutral-200">
                     <div className="flex flex-col gap-1 self-stretch">
                         <div className="flex items-center self-stretch">
