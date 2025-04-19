@@ -1,80 +1,98 @@
-// import './Sidebar.css';
+import SecondaryButton from './common/Buttons/SecondaryButton';
+import { RiChatVoiceAiFill } from "react-icons/ri";
 
-import Link from './common/Buttons/Link';
+interface SidebarProps {
+    isMobile?: boolean;
+    onClose?: () => void;
+}
 
-function Sidebar() {
+function Sidebar({ isMobile = false, onClose }: SidebarProps) {
     return (
-        <div className="flex flex-col self-stretch w-60 bg-white px-4 py-6 border-solid border-neutral-200">
-            <div className="flex justify-between items-center self-stretch px-1 py-4">
-                <div className="w-[86px] flex">
-                    <div className="w-[86px] h-8">
-                        <div className="w-[52px] h-8">
-                            <span className="font-bold text-base text-neutral-900">
-                                Chat AI
+        <>
+            {/* Sidebar for larger screens or mobile/tablet */}
+            <aside
+                className={`${
+                    isMobile ? 'fixed inset-y-0 left-0 z-40 w-60 bg-white px-4 py-6' : 'hidden md:flex'
+                } px-4 py-6 flex-col w-full max-w-[240px] bg-white border-r border-neutral-200 md:w-60`}
+            >
+                {/* Header Section */}
+                <header className="flex justify-between items-center px-4 py-3 bg-white sticky top-0 z-10">
+                    <div className="flex gap-1 items-center">
+                        <RiChatVoiceAiFill color='#4338ca' title='Chat AI' size={'20px'} />
+                        <span className="font-bold text-base text-neutral-900 tracking-tighter">Chat AI</span>
+                    </div>
+                    {isMobile && (
+                        <button
+                            className="w-4 h-4 p-0 bg-white text-neutral-900"
+                            aria-label="Close sidebar"
+                            onClick={onClose}
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={2}
+                                stroke="currentColor"
+                                className="w-4 h-4"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M6 18L18 6M6 6l12 12"
+                                />
+                            </svg>
+                        </button>
+                    )}
+                </header>
+
+                {/* Ongoing Prompt Section */}
+                <section className="flex flex-col gap-4 grow mb-6 overflow-y-auto px-4 py-3">
+                    <div className="bg-neutral-50 rounded p-3">
+                        <div className="flex items-center gap-3">
+                            <div className="w-5 h-5">
+                                <svg
+                                    className="w-5 h-5 text-indigo-700"
+                                    aria-hidden="true"
+                                    focusable="false"
+                                ></svg>
+                            </div>
+                            <span className="font-medium text-sm text-indigo-700">
+                                Ongoing prompt
                             </span>
                         </div>
-                        <div className="flex">
-                            <div className="w-8 h-8 rounded-lg"></div>
-                        </div>
                     </div>
-                </div>
-                <div className="flex justify-center items-center gap-2 rounded opacity-0">
-                    <div className="w-5 h-5">
-                        <div className="w-[16.666667938232422px] h-[16.666667938232422px]">
-                            <svg className="w-[8.838805198669434px] h-[8.838805198669434px] text-neutral-600"></svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="flex flex-col gap-4 self-stretch grow">
-                <div className="flex flex-col gap-3 self-stretch grow">
-                    <div className="flex flex-col self-stretch bg-neutral-50 rounded">
-                        <div className="flex items-center gap-2 self-stretch p-1.5 rounded-tr-lg rounded-br-lg">
-                            <div className="flex items-center gap-3 grow">
-                                <div className="w-5 h-5">
-                                    <svg className="w-[14.166666030883789px] h-5 text-indigo-700"></svg>
-                                </div>
-                                <span className="font-medium text-xs text-indigo-700">
-                                    Ongoing prompt
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="flex flex-col gap-4 self-stretch">
-                <Link disabled={false} />
-                <div className="flex flex-col gap-6 self-stretch bg-white p-4 rounded-lg border border-solid border-neutral-200">
-                    <div className="flex flex-col gap-1 self-stretch">
-                        <div className="flex items-center self-stretch">
-                            <span className="font-medium text-sm text-neutral-900">
+                </section>
+
+                {/* Footer Section */}
+                <footer className="flex flex-col gap-4 px-4 py-3 bg-white sticky bottom-0 z-10">
+                    <SecondaryButton />
+                    <div className="bg-white p-4 rounded-lg border border-neutral-200">
+                        <div className="mb-4">
+                            <h2 className="font-medium text-sm text-neutral-900">
                                 Let’s create an account
-                            </span>
+                            </h2>
+                            <p className="font-normal text-xs text-neutral-600">
+                                Save your chat history, share chat, and personalize your experience.
+                            </p>
                         </div>
-                        <span className="font-normal text-xs text-neutral-600">
-                            Save your chat history, share chat, and personalize
-                            your experience.
-                        </span>
-                    </div>
-                    <div className="flex flex-col gap-1 self-stretch">
-                        <div className="flex justify-center items-center gap-1 self-stretch bg-indigo-700 px-3 py-2 rounded">
-                            <div className="flex justify-center items-center px-0.5">
-                                <span className="font-medium text-sm text-white">
-                                    Sign in
-                                </span>
-                            </div>
-                        </div>
-                        <div className="flex justify-center items-center gap-1 self-stretch px-3 py-2 rounded">
-                            <div className="flex justify-center items-center px-0.5">
-                                <span className="font-medium text-sm text-indigo-700">
-                                    Create account
-                                </span>
-                            </div>
+                        <div className="flex flex-col gap-2">
+                            <button
+                                className="w-full bg-indigo-700 text-white font-medium text-sm py-2 rounded"
+                                aria-label="Sign in"
+                            >
+                                Sign in
+                            </button>
+                            <button
+                                className="w-full bg-transparent text-indigo-700 font-medium text-sm py-2 rounded border border-indigo-700"
+                                aria-label="Create account"
+                            >
+                                Create account
+                            </button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </footer>
+            </aside>
+        </>
     );
 }
 
