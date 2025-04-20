@@ -4,6 +4,9 @@ const config: Config = {
     content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
+            fontFamily: {
+                sans: ['Inter', 'Roboto', 'Poppins', 'sans-serif'], // Add desired fonts here
+            },
             colors: {
                 primary: {
                     '50': '#eef2ff',

@@ -3,7 +3,7 @@ import { RiChatVoiceAiFill } from "react-icons/ri";
 
 interface SidebarProps {
     isMobile?: boolean;
-    isOpen?: boolean; // New prop to control animation state
+    isOpen?: boolean;
     onClose?: () => void;
 }
 
