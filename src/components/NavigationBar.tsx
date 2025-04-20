@@ -26,9 +26,7 @@ function NavigationBar() {
             )}
 
             {/* Sidebar for Mobile/Tablet */}
-            {isSidebarOpen && (
-                <Sidebar isMobile onClose={toggleSidebar} />
-            )}
+            <Sidebar isMobile isOpen={isSidebarOpen} onClose={toggleSidebar} />
         </>
     );
 }

@@ -3,16 +3,20 @@ import { RiChatVoiceAiFill } from "react-icons/ri";
 
 interface SidebarProps {
     isMobile?: boolean;
+    isOpen?: boolean; // New prop to control animation state
     onClose?: () => void;
 }
 
-function Sidebar({ isMobile = false, onClose }: SidebarProps) {
+function Sidebar({ isMobile = false, isOpen = false, onClose }: SidebarProps) {
     return (
         <>
-            {/* Sidebar for larger screens or mobile/tablet */}
             <aside
                 className={`${
-                    isMobile ? 'fixed inset-y-0 left-0 z-40 w-60 bg-white px-4 py-6' : 'hidden md:flex'
+                    isMobile
+                        ? `fixed inset-y-0 left-0 z-40 w-60 bg-white px-4 py-6 transform transition-transform duration-300 ${
+                              isOpen ? 'translate-x-0' : '-translate-x-full'
+                          }`
+                        : 'hidden md:flex'
                 } px-4 py-6 flex-col w-full max-w-[240px] bg-white border-r border-neutral-200 md:w-60`}
             >
                 {/* Header Section */}
